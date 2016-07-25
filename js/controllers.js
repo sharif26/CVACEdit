@@ -2,6 +2,7 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope, $window) {
 
+// to support device width, height
   $scope.dwidth = $window.innerWidth;
   $scope.dheight = $window.innerHeight;
 
@@ -21,8 +22,8 @@ angular.module('starter.controllers', [])
     Chats.remove(chat);
   };
   $scope.fetchWO = function(scr) {
-
-    $http.get('http://www.chesterfield.mo.us/cmss_files/mytest.php?type=loadCVAC', {
+//url to get list of cvac fields & their status
+    $http.get('', {
     }, {
       headers: {
           'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0'
@@ -45,11 +46,12 @@ angular.module('starter.controllers', [])
 //      $scope.chats.splice($scope.chats.indexOf(chat), 1);
     var status = '';
     if( chat.Status == 'Open'  )
-      status = 'Closed'
+      status = 'Closed';
     else
-      status = 'Open'
-    $http.get('http://www.chesterfield.mo.us/cmss_files/mytest.php?type=updateCVAC&field='
-      + chat.Field + '&status=' + status)
+      status = 'Open'';
+    
+    url = ''; //xhr url to modify the field status
+    $http.get(url+'&field='+ chat.Field + '&status=' + status)
     .success(function(data,status,headers,config){
       //$scope.chat = data;
       //Chats.chats = data;
@@ -83,9 +85,11 @@ angular.module('starter.controllers', [])
     enableFriends: true
   };
 */
-  $scope.fetchWO = function(scr) {
+// need to figure out how to reuse code from various controllers
 
-    $http.get('http://www.chesterfield.mo.us/cmss_files/mytest.php?type=loadCVAC', {
+  $scope.fetchWO = function(scr) {
+////url to get list of cvac fields & their status
+    $http.get('', {
     }, {
       headers: {
           'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0'
@@ -111,8 +115,8 @@ angular.module('starter.controllers', [])
 
   $scope.pushNotificationChange = function(chat) {
     console.log('Push Notification Change', chat);
-    $http.get('http://www.chesterfield.mo.us/cmss_files/mytest.php?type=updateCVAC&field='
-      + chat.Field + '&status=' + chat.Status)
+    url = ''; //xhr url to modify the field status
+    $http.get(url+'&field=' + chat.Field + '&status=' + chat.Status)
     .success(function(data,status,headers,config){
       //$scope.chat = data;
       //Chats.chats = data;
