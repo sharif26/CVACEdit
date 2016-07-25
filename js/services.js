@@ -33,7 +33,7 @@ angular.module('starter.services', [])
 
   return {
     getWOs: function(){
-      return $http.get('http://www.chesterfield.mo.us/cmss_files/mytest.php');
+      return $http.get('');//url to fetch the the list of cvac 
     },
     all: function() {
       return chats;
