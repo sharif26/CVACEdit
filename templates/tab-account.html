@@ -1,0 +1,20 @@
+<ion-view view-title="Field Status">
+  <ion-content>
+    <ion-list>
+<!--    <ion-toggle  ng-model="settings.enableFriends">
+        Enable Friends
+    </ion-toggle>
+-->
+    <ion-toggle ng-repeat="chat in chats"
+                ng-change="pushNotificationChange(chat)"
+                ng-model="chat.Status"
+                ng-true-value="'Open'"
+                ng-false-value="'Closed'"
+                class="chat-item">
+                <h2>{{chat.Field}}</h2>
+                <p>{{chat.Status}}</p>
+    </ion-toggle>
+
+    </ion-list>
+  </ion-content>
+</ion-view>
