@@ -46,11 +46,12 @@ angular.module('starter.controllers', [])
 //      $scope.chats.splice($scope.chats.indexOf(chat), 1);
     var status = '';
     if( chat.Status == 'Open'  )
-      status = 'Closed';
+      status = 'Closed'
     else
-      status = 'Open'';
+      status = 'Open''
     
     url = ''; //xhr url to modify the field status
+    
     $http.get(url+'&field='+ chat.Field + '&status=' + status)
     .success(function(data,status,headers,config){
       //$scope.chat = data;
